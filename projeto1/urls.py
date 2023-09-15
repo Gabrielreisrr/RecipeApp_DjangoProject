@@ -14,9 +14,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+# O arquivo URL tem como objetivo guardar todas as rotas do site, seja homepage, login, pagina principal etc.
+
+# A função path recebe como primeiro argumento a rota que que sera requirida (request) e como segundo
+# argumento a função que o servidor utilizara para mandar a resposta(response).
+
+# Utilizando a função include do django é possivel criar um arquivo url dentro de um app 
+# e herdar as rotas que foram destinada aquele app, o que facilita na oeganização.
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('recipes.urls')),
 ]
